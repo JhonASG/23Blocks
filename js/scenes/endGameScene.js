@@ -1,5 +1,3 @@
-import { MainScene } from "./mainScene.js";
-
 export class EndGame extends Phaser.Scene {
     constructor ( finalPositionCards, startPosCardX, startPosCardY) {
         super("winScene");
@@ -7,24 +5,7 @@ export class EndGame extends Phaser.Scene {
         this.startPosCardX = startPosCardX;
         this.startPosCardY = startPosCardY;
     }
-    preload () {
-        this.load.image("winner", "../../img/you-win.png");
-        this.load.image("gold-medal", "../../img/gold-medal.png");
-        this.load.spritesheet("confetti", "../../img/Confetti.png", {
-            frameWidth: 128,
-            frameHeight: 128
-        });
-
-        this.load.image("bg", "../../img/bg-menu.jpg");
-        this.load.image("menu", "../../img/menu.png");
-        this.load.image("logo", "../../img/23blockstitle.png");
-        this.load.image("kid", "../../img/nerd.png");
-        this.load.image("background", "../../img/background.jpg");
-        this.load.spritesheet("23blocks", "../../img/23blocks.png", {
-            frameWidth: 91.166,
-            frameHeight: 91.2
-        });
-    }
+    preload () {}
     create () {
         this.add.image(480, 320, "bg");
         this.add.image(400, 75, "logo");
