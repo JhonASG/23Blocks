@@ -3,7 +3,6 @@ import { EndGame } from "./scenes/endGameScene.js";
 import { Level } from "./scenes/levelScene.js";
 import { MainScene } from "./scenes/mainScene.js";
 import { Menu } from "./scenes/menuScene.js";
-import { Mode } from "./scenes/modeScene.js";
 
 // Variables y funciones comunes a todas nuestras class
 let posiblesTables = [0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24, 27];
@@ -38,12 +37,11 @@ const config = {
     width: 800,
     height: 530,
     scene: [
-        EndGame,
-        MainScene,
         Menu,
+        MainScene,
         Level,
-        Mode,
         Controls,
+        EndGame,
     ],
     scale: {
         mode: Phaser.Scale.FIT

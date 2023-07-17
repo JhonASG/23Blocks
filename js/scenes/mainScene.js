@@ -13,6 +13,8 @@ export class MainScene extends Phaser.Scene {
         this.posiblesTablesOriginal = posiblesTablesOriginal;
         this.startCardPosX = startCardPosX;
         this.startCardPosY = startCardPosY;
+        this.stateLevel = levelName;
+        this.numDificult = level;
     }
     preload () {}
     create () {
@@ -81,7 +83,7 @@ export class MainScene extends Phaser.Scene {
 
             //Indentificar cuando el player a organizado en el orden correcto todas las tablas.
             const identifyWhenPlayerWon = new IndentifyWhenPlayerWon ( posibility, copyOriginalPosibility );
-            console.log(identifyWhenPlayerWon.arrayEqualsBlocksOrder())
+            
             if (identifyWhenPlayerWon.arrayEqualsBlocksOrder()) {
                 win = true;
             }
@@ -109,6 +111,12 @@ export class MainScene extends Phaser.Scene {
 
             startPosCardX++;
         }
+    }
+    setLevelCurrentGame (nameLevel, numberLevel) {
+        level = numberLevel;
+        levelName = nameLevel;
+        this.stateLevel = levelName;
+        this.numDificult = level;
     }
     update () {
         function playerToFinished() {
@@ -197,5 +205,6 @@ let win = false;
 let canGameFinish = false;
 let movementByKeyboard = [true, true, true, true] //[Left, Right, Up, Down]
 let level = 1;
+let levelName = "Easy";
 let numberToShowOrHide = 0;
 const repeatAfter = 250;
