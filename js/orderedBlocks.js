@@ -4,12 +4,6 @@ import { Level } from "./scenes/levelScene.js";
 import { MainScene } from "./scenes/mainScene.js";
 import { Menu } from "./scenes/menuScene.js";
 
-// Variables y funciones comunes a todas nuestras class
-let posiblesTables = [0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24, 27];
-const copyPosiblesTables = [...posiblesTables];
-const cardPosX = 0;
-const cardPosY = 200;
-
 // Función para desordenar las cartas en el tablero utilizando el algoritmo de Fisher Yates Shuffle
 function shuffle(array) {
     let currentIndex = array.length,  randomIndex;
@@ -25,11 +19,19 @@ function shuffle(array) {
 }
 
 // Instancias de las escenas
-const drawingCardsMainScene = new MainScene( shuffle(posiblesTables), copyPosiblesTables, cardPosX, cardPosY );
-drawingCardsMainScene.setValueDrawCards();
+export function creationInstancesGame () {
+    // Variables y funciones comunes a todas nuestras class
+    let posiblesTables = [0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24, 27];
+    const copyPosiblesTables = [...posiblesTables];
+    const cardPosX = 0;
+    const cardPosY = 200;
 
-const drawingCardsGoal = new EndGame( copyPosiblesTables, cardPosX, cardPosY );
-drawingCardsGoal.setValueDrawCards();
+    const drawingCardsMainScene = new MainScene( shuffle(posiblesTables), copyPosiblesTables, cardPosX, cardPosY );
+    drawingCardsMainScene.setValueDrawCards();
+    
+    const drawingCardsGoal = new EndGame( copyPosiblesTables, cardPosX, cardPosY );
+    drawingCardsGoal.setValueDrawCards();
+}
 
 //Configuración del juego
 const config = {

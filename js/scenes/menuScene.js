@@ -1,3 +1,5 @@
+import { creationInstancesGame } from "../orderedBlocks.js";
+
 export class Menu extends Phaser.Scene {
     constructor () {
         super("menuScene");
@@ -58,6 +60,8 @@ export class Menu extends Phaser.Scene {
 
             musicCanStart = false;
         }
+
+        creationInstancesGame();
     }
     barPreLoadAssets () {
         let progressBar = this.add.graphics();
