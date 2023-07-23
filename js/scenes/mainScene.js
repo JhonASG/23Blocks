@@ -19,6 +19,7 @@ export class MainScene extends Phaser.Scene {
     preload () {}
     create () {
         canGameFinish = true;
+        win = false;
         this.add.image(300, 200, "background"); // Dibujar el fondo
         this.drawingCards(this); //Dibujando cartas en la escena
         this.creatingZoneDetectionMoveMouse(this); //Zona para detectar el movimiento del usuario con el mouse sobre la pantalla
@@ -82,6 +83,8 @@ export class MainScene extends Phaser.Scene {
             movementBlocks.directionMovement(getCardEmpty);
 
             //Indentificar cuando el player a organizado en el orden correcto todas las tablas.
+            console.log(posibility)
+            console.log(copyOriginalPosibility)
             const identifyWhenPlayerWon = new IndentifyWhenPlayerWon ( posibility, copyOriginalPosibility );
             
             if (identifyWhenPlayerWon.arrayEqualsBlocksOrder()) {
@@ -96,6 +99,8 @@ export class MainScene extends Phaser.Scene {
         startPosCardY = this.startCardPosY;
     }
     drawingCards () {
+        arrayBlocks = [];
+
         for (let i = 0; i < posibility.length; i++) {
             if (i % 8 == 0 && i > 7) {
                 startPosCardX = 0;
@@ -147,7 +152,6 @@ export class MainScene extends Phaser.Scene {
         }
 
         if ( win && canGameFinish ) {
-            console.log(canGameFinish)
             canGameFinish = false;
 
             //Al finalizar enviar el player a pantalla de fin de juego
